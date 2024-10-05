@@ -596,22 +596,6 @@ video {
   position: relative;
 }
 
-.bottom-20 {
-  bottom: 5rem;
-}
-
-.right-20 {
-  right: 5rem;
-}
-
-.bottom-16 {
-  bottom: 4rem;
-}
-
-.bottom-12 {
-  bottom: 3rem;
-}
-
 .bottom-56 {
   bottom: 14rem;
 }
@@ -634,20 +618,28 @@ video {
   display: flex;
 }
 
-.h-36 {
-  height: 9rem;
+.h-12 {
+  height: 3rem;
 }
 
 .h-24 {
   height: 6rem;
 }
 
-.h-12 {
-  height: 3rem;
+.h-36 {
+  height: 9rem;
 }
 
 .w-1\/2 {
   width: 50%;
+}
+
+.w-24 {
+  width: 6rem;
+}
+
+.w-36 {
+  width: 9rem;
 }
 
 .w-\[50vw\] {
@@ -656,18 +648,6 @@ video {
 
 .w-screen {
   width: 100vw;
-}
-
-.w-24 {
-  width: 6rem;
-}
-
-.w-12 {
-  width: 3rem;
-}
-
-.w-36 {
-  width: 9rem;
 }
 
 .flex-col {
@@ -691,9 +671,9 @@ video {
   background-color: rgb(96 165 250 / var(--tw-bg-opacity));
 }
 
-.bg-green-400 {
+.bg-green-300 {
   --tw-bg-opacity: 1;
-  background-color: rgb(74 222 128 / var(--tw-bg-opacity));
+  background-color: rgb(134 239 172 / var(--tw-bg-opacity));
 }
 
 .bg-red-400 {
@@ -704,11 +684,6 @@ video {
 .bg-yellow-400 {
   --tw-bg-opacity: 1;
   background-color: rgb(250 204 21 / var(--tw-bg-opacity));
-}
-
-.bg-green-300 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(134 239 172 / var(--tw-bg-opacity));
 }
 
 .py-6 {
@@ -729,22 +704,18 @@ video {
   line-height: 2.25rem;
 }
 
-.text-xs {
-  font-size: 0.75rem;
-  line-height: 1rem;
-}
-
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
 
-.font-extrabold {
-  font-weight: 800;
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
 
-.uppercase {
-  text-transform: uppercase;
+.font-extrabold {
+  font-weight: 800;
 }
 
 .capitalize {
@@ -767,4 +738,3 @@ video {
 .hover\:cursor-pointer:hover {
   cursor: pointer;
 }
-

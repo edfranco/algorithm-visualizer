@@ -24,8 +24,8 @@ export function Card({
             index === currentIndex
               ? "bg-red-400"
               : index === compareIndex
-              ? "bg-yellow-400"
-              : "bg-blue-400"
+                ? "bg-yellow-400"
+                : "bg-blue-400"
           }
           ${index! < currentIndex! || isFinished ? "bg-green-300" : ""}
       `}

@@ -11,19 +11,19 @@ export function Algorithm({ name }: AlgorithmProps) {
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
   const [compareIndex, setCompareIndex] = useState<number | null>(null);
   const [isFinished, setFinished] = useState<boolean>(false);
-  
+
   useEffect(() => {
     setNumArray(getUnsortedArray());
   }, []);
 
   const selectionSort = async (arr: Array<number>) => {
     setFinished(false);
-    for(let i=0; i < arr.length; i++) {
+    for (let i = 0; i < arr.length; i++) {
       setCurrentIndex(i);
-      for(let j=i+1; j < arr.length; j++) {
+      for (let j = i + 1; j < arr.length; j++) {
         setCompareIndex(j);
         await delay(1000);
-        if(arr[i] > arr[j]) {
+        if (arr[i] > arr[j]) {
           let temp = arr[i];
           arr[i] = arr[j];
           arr[j] = temp;
@@ -34,7 +34,7 @@ export function Algorithm({ name }: AlgorithmProps) {
       }
     }
     setFinished(true);
-  }
+  };
 
   const renderDescription = (algorithmName: string) => {
     switch (algorithmName) {
@@ -44,47 +44,49 @@ export function Algorithm({ name }: AlgorithmProps) {
         return "Selection sort repeatedly selects the smallest unsorted element and swaps it with the first unsorted element, iteratively.";
     }
   };
-  
+
   const renderCards = (arr: Array<number>) => {
     return arr.map((num, index) => {
-      return <Card 
-      num={num} 
-      key={num}
-      index={index}
-      currentIndex={currentIndex}
-      compareIndex={compareIndex}
-      isFinished={isFinished}
-      />;
+      return (
+        <Card
+          num={num}
+          key={num}
+          index={index}
+          currentIndex={currentIndex}
+          compareIndex={compareIndex}
+          isFinished={isFinished}
+        />
+      );
     });
   };
-  
+
   const handleSort = () => {
-    selectionSort([...numArray])
+    selectionSort([...numArray]);
   };
 
   const handleShuffle = () => {
     setCurrentIndex(null);
     setCompareIndex(null);
     setFinished(false);
-    setNumArray([...getUnsortedArray()])
+    setNumArray([...getUnsortedArray()]);
   };
 
   return (
-    <div className='algorithm-container flex flex-col justify-center items-center'>
-      <h2 className='capitalize'>{name} Sort</h2>
-      <div className='flex justify-center items-center my-24'>
+    <div className="algorithm-container flex flex-col justify-center items-center">
+      <h2 className="capitalize">{name} Sort</h2>
+      <div className="flex justify-center items-center my-24">
         {renderCards(numArray)}
       </div>
-      <div className='flex'>
+      <div className="flex">
         <button
           onClick={handleSort}
-          className='button border w-36 h-12 text-sm text-center hover:cursor-pointer'
+          className="button border w-36 h-12 text-sm text-center hover:cursor-pointer"
         >
           Sort
         </button>
         <button
           onClick={handleShuffle}
-          className='button border w-36 h-12 text-sm text-center hover:cursor-pointer'
+          className="button border w-36 h-12 text-sm text-center hover:cursor-pointer"
         >
           Shuffle
         </button>
