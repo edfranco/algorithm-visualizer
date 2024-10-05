@@ -638,6 +638,14 @@ video {
   height: 9rem;
 }
 
+.h-24 {
+  height: 6rem;
+}
+
+.h-12 {
+  height: 3rem;
+}
+
 .w-1\/2 {
   width: 50%;
 }
@@ -648,6 +656,18 @@ video {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-24 {
+  width: 6rem;
+}
+
+.w-12 {
+  width: 3rem;
+}
+
+.w-36 {
+  width: 9rem;
 }
 
 .flex-col {
@@ -714,8 +734,21 @@ video {
   line-height: 1rem;
 }
 
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
 .font-extrabold {
   font-weight: 800;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
 }
 
 .text-white {
