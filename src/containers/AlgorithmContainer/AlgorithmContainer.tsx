@@ -7,27 +7,45 @@ interface AlgorithmProps {
 }
 
 export function Algorithm({ name }: AlgorithmProps) {
-    const [numArray, setNumArray] = useState<number[]>([]);
-    const [currentIndex, setCurrentIndex] = useState<number | null>(null);
-    const [compareIndex, setCompareIndex] = useState<number | null>(null);
-    const [isFinished, setFinished] = useState<boolean>(false);
+  const [bound, setBound] = useState<number | null>(null);
+  const [currentAlgorithm, setCurrentAlgorithm] = useState<string| null>(null);
+  const [currentIndex, setCurrentIndex] = useState<number | null>(null);
+  const [compareIndex, setCompareIndex] = useState<number | null>(null);
+  const [isFinished, setFinished] = useState<boolean>(false);
+  const [numArray, setNumArray] = useState<number[]>([]);
 
     useEffect(() => {
         setNumArray(getUnsortedArray());
     }, []);
 
+    const bubbleSort = async (arr: Array<number>) => {
+      let swapped = true;
+      let bound = arr.length - 1;
+      setFinished(false);
+      setCurrentAlgorithm('bubble');
+      while(swapped) {
+        swapped = false;
+        for(let i=0; i < bound; i++) {
+          setCurrentIndex(i);
+          setCompareIndex(i+1);
+          await delay(500)
+        }
+      }
+      setFinished(true);
+    }
+
     const selectionSort = async (arr: Array<number>) => {
         setFinished(false);
+        setCurrentAlgorithm('selection');
         for (let i = 0; i < arr.length; i++) {
             setCurrentIndex(i);
             for (let j = i + 1; j < arr.length; j++) {
                 setCompareIndex(j);
-                await delay(1000);
+                await delay(500);
                 if (arr[i] > arr[j]) {
                     let temp = arr[i];
                     arr[i] = arr[j];
                     arr[j] = temp;
-
                     setNumArray([...arr]);
                     await delay(500);
                 }
@@ -36,8 +54,8 @@ export function Algorithm({ name }: AlgorithmProps) {
         setFinished(true);
     };
 
-    const renderDescription = (algorithmName: string) => {
-        switch (algorithmName) {
+    const renderDescription = () => {
+        switch (name) {
             case 'bubble':
                 return 'Bubble sort repeatedly compares and swaps adjacent elements, moving the largest unsorted elements to their correct positions iteratively.';
             case 'selection':
@@ -52,6 +70,8 @@ export function Algorithm({ name }: AlgorithmProps) {
                     num={num}
                     key={num}
                     index={index}
+                    bound={bound}
+                    currentAlgorithm={currentAlgorithm}
                     currentIndex={currentIndex}
                     compareIndex={compareIndex}
                     isFinished={isFinished}
@@ -61,7 +81,12 @@ export function Algorithm({ name }: AlgorithmProps) {
     };
 
     const handleSort = () => {
-        selectionSort([...numArray]);
+        switch(name) {
+          case 'bubble':
+            return bubbleSort([...numArray]);
+          case 'selection':
+            return selectionSort([...numArray])
+        };
     };
 
     const handleShuffle = () => {
@@ -72,26 +97,26 @@ export function Algorithm({ name }: AlgorithmProps) {
     };
 
     return (
-        <div className="algorithm-container flex flex-col justify-center items-center">
-            <h2 className="capitalize">{name} Sort</h2>
-            <div className="flex justify-center items-center my-24">
+        <div className="algorithm-container mt-4 mb-12 flex flex-col justify-center items-center">
+            <h2 className="capitalize mb-8 text-xl font-bold">{name} Sort</h2>
+            <div className="flex justify-center items-center">
                 {renderCards(numArray)}
             </div>
-            <div className="flex">
+            <div className="flex my-12">
                 <button
                     onClick={handleSort}
-                    className="button border w-36 h-12 text-sm text-center hover:cursor-pointer"
+                    className="bg-sky-700 border w-36 h-12 mx-3 text-sm text-center hover:cursor-pointer"
                 >
                     Sort
                 </button>
                 <button
                     onClick={handleShuffle}
-                    className="button border w-36 h-12 text-sm text-center hover:cursor-pointer"
+                    className="bg-sky-700 border w-36 h-12 mx-3 text-sm text-center hover:cursor-pointer"
                 >
                     Shuffle
                 </button>
             </div>
-            <p>{renderDescription(name)}</p>
+            <p>{renderDescription()}</p>
         </div>
     );
 }

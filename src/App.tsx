@@ -1,12 +1,11 @@
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
 import { Algorithm } from './containers/AlgorithmContainer/AlgorithmContainer';
 import './output.css';
 
 function App() {
     return (
-        <div className="w-screen flex flex-col justify-center items-center text-white font-extrabold text-3xl">
-            <h1 className="text-center">Algorithms Visualization</h1>
+        <div className="bg-neutral-900 w-screen flex flex-col justify-center items-center text-white">
+            <h1 className="text-center text-3xl mt-6 mb-4 font-extrabold">Algorithms Visualization</h1>
+            <Algorithm name="bubble" />
             <Algorithm name="selection" />
         </div>
     );
